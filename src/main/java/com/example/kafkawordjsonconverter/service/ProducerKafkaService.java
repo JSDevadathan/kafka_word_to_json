@@ -19,13 +19,10 @@ import java.util.Map;
 
 
 @Service
+@RequiredArgsConstructor
 public class ProducerKafkaService {
     private static final Logger LOGGER = LoggerFactory.getLogger(Producer.class);
-    private KafkaTemplate<String, String> kafkaTemplate;
-
-    public ProducerKafkaService(KafkaTemplate<String, String> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
-    }
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     public void upload(MultipartFile file) throws Exception {
         XWPFDocument document = new XWPFDocument(file.getInputStream());

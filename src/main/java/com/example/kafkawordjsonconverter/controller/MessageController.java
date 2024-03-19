@@ -10,12 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/v1/upload")
+@RequiredArgsConstructor
 public class MessageController {
-    private ProducerKafkaService producerKafkaService;
-
-    public MessageController(ProducerKafkaService producerKafkaService) {
-        this.producerKafkaService = producerKafkaService;
-    }
+    private final ProducerKafkaService producerKafkaService;
 
     @PostMapping
     public String upload(@RequestParam("file") MultipartFile file) throws Exception {
